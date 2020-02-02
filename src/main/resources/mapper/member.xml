@@ -1,0 +1,39 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.express.magarine.api">
+    <select id="selectName" resultType="string">
+		SELECT overview
+		FROM movie
+
+	</select>
+
+	<select id="selectProdict" parameterType="com.example.demo.repository.entity.Product" resultType="java.util.Map">
+			SELECT PRODUCTSEQ,PRODUCTNM,PRICE,AMOUNT,REGDATE FROM TB_PRODUCT order by regDate desc
+	</select>
+
+
+	<select id="selectProductTotalCount" parameterType="com.example.demo.repository.entity.Product" resultType="long">
+			SELECT Count(*) FROM TB_PRODUCT
+	</select>
+
+	<insert id="insertProduct" parameterType="com.example.demo.repository.entity.Product" >
+		insert into TB_PRODUCT ( PRODUCTSEQ, PRODUCTNM, PRICE, AMOUNT )
+		values ( #{productSeq}, #{productNm}, #{price}, #{amount} )
+	</insert>
+
+	<select id="nextProductSeq" resultType="string">
+		SELECT PRODUCTSEQ.NEXTVAL FROM DUAL
+	</select>
+
+	<delete id="deleteProduct" parameterType="com.example.demo.repository.entity.Product" >
+		delete from TB_PRODUCT where PRODUCTSEQ = #{productSeq}
+	</delete>
+
+	<update id="updateProduct" parameterType="com.example.demo.repository.entity.Product">
+		update TB_PRODUCT
+		set PRODUCTNM = #{productNm}, PRICE = #{price}, AMOUNT = #{amount}
+		where PRODUCTSEQ = #{productSeq}
+	</update>
+
+
+</mapper>
