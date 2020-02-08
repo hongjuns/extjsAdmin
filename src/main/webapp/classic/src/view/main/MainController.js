@@ -21,9 +21,18 @@ Ext.define('Study.view.main.MainController', {
         var centerPage = obj.up("viewport").down("component[region=center]");
         console.log(record.get("page"));
         centerPage.removeAll(true);
-        centerPage.add({
-            xtype : record.get("page")
-        })
-    }
+        if (record.get("page") == "undefined" || record.get("page") == undefined){
+
+            centerPage.add({
+                xtype : 'container'
+            })
+        }else {
+            centerPage.add({
+                xtype : record.get("page")
+            })
+        }
+
+    },
+
 
 });

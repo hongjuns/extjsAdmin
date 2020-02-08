@@ -10,17 +10,22 @@ Ext.define('Study.view.main.Main', {
     xtype: 'main',
     layout : 'border',
     controller : 'main',
+    viewModel :'main',
     items :[{
         xtype : 'panel',
         region : 'north',
         header : false,
         items : [{
             xtype: 'toolbar',
+            cls :'top',
             items : [{
                 xtype:'label',
-                html: '<h2> Market Admin</h2>'
+                html: '<h2> Market Admin</h2>',
+                page :'main',
             },'->',{
                 xtype: 'button',
+                scale : 'large',
+                ui :'materialbtn',
                 text: 'Hongjun 님',
                 menu : [{
                     text : '비밀번호 변경',
@@ -33,12 +38,14 @@ Ext.define('Study.view.main.Main', {
         }]
     },{
         xtype :'panel',
-        split :true,
+        //split :true,
         region: 'west',
         border :true,
         width:200,
+        layout :'fit',
         items :[{
             xtype : 'treelist',
+            ui :'menulist',
             listeners : {
               selectionchange : 'changeMenu'
             },
@@ -80,14 +87,194 @@ Ext.define('Study.view.main.Main', {
             }
         }]
     },{
-        xtype :'panel',
+        xtype :'container',
         region: 'center',
-        border : true,
-        layout: 'fit',
-        flex :1,
-        items : {
+        layout :'fit',
+        items:[{
             xtype :'panel',
-            html : "<h2>Main DashBoards </h2>"
-        }
+            layout:'vbox',
+            items:[{
+                margin: 10,
+                width: '100%',
+                height: '30%',
+                xtype: 'cartesian',
+                bind: { // 2
+                    store: '{recordset}'    // 3
+                },
+                axes: [{
+                    type: 'numeric',
+                    position: 'left',
+                    fields: ['price1'],
+                    title: {
+                        text: 'Sample Values',
+                        fontSize: 15
+                    },
+                    grid: true,
+                    minimum: 0
+                }, {
+                    type: 'category',
+                    position: 'bottom',
+                    fields: ['group'],
+                    title: {
+                        text: 'Sample Values',
+                        fontSize: 15
+                    }
+                }],
+                series: [{
+                    type: 'line',
+                    style: {
+                        stroke: '#30BDA7',
+                        lineWidth: 2
+                    },
+                    xField: 'group',
+                    yField: 'price1',
+                    marker: {
+                        type: 'path',
+                        path: ['M', - 4, 0, 0, 4, 4, 0, 0, - 4, 'Z'],
+                        stroke: '#30BDA7',
+                        lineWidth: 2,
+                        fill: 'white'
+                    }
+                }, {
+                    type: 'line',
+                    fill: true,
+                    style: {
+                        fill: '#96D4C6',
+                        fillOpacity: .6,
+                        stroke: '#0A3F50',
+                        strokeOpacity: .6,
+                    },
+                    xField: 'group',
+                    yField: 'price2',
+                    marker: {
+                        type: 'circle',
+                        radius: 4,
+                        lineWidth: 2,
+                        fill: 'white'
+                    }
+                }]
+            },{
+                margin: 10,
+                width: '100%',
+                height: '30%',
+                xtype: 'cartesian',
+                bind: { // 2
+                    store: '{recordset}'    // 3
+                },
+                axes: [{
+                    type: 'numeric',
+                    position: 'left',
+                    fields: ['price1'],
+                    title: {
+                        text: 'Sample Values',
+                        fontSize: 15
+                    },
+                    grid: true,
+                    minimum: 0
+                }, {
+                    type: 'category',
+                    position: 'bottom',
+                    fields: ['group'],
+                    title: {
+                        text: 'Sample Values',
+                        fontSize: 15
+                    }
+                }],
+                series: [{
+                    type: 'line',
+                    style: {
+                        stroke: '#30BDA7',
+                        lineWidth: 2
+                    },
+                    xField: 'group',
+                    yField: 'price1',
+                    marker: {
+                        type: 'path',
+                        path: ['M', - 4, 0, 0, 4, 4, 0, 0, - 4, 'Z'],
+                        stroke: '#30BDA7',
+                        lineWidth: 2,
+                        fill: 'white'
+                    }
+                }, {
+                    type: 'line',
+                    fill: true,
+                    style: {
+                        fill: '#96D4C6',
+                        fillOpacity: .6,
+                        stroke: '#0A3F50',
+                        strokeOpacity: .6,
+                    },
+                    xField: 'group',
+                    yField: 'price2',
+                    marker: {
+                        type: 'circle',
+                        radius: 4,
+                        lineWidth: 2,
+                        fill: 'white'
+                    }
+                }]
+            },
+                {
+                    margin: 10,
+                    width: '100%',
+                    height: '30%',
+                    xtype: 'cartesian',
+                    bind: { // 2
+                        store: '{recordset}'    // 3
+                    },
+                    axes: [{
+                        type: 'numeric',
+                        position: 'left',
+                        fields: ['price1'],
+                        title: {
+                            text: 'Sample Values',
+                            fontSize: 15
+                        },
+                        grid: true,
+                        minimum: 0
+                    }, {
+                        type: 'category',
+                        position: 'bottom',
+                        fields: ['group'],
+                        title: {
+                            text: 'Sample Values',
+                            fontSize: 15
+                        }
+                    }],
+                    series: [{
+                        type: 'line',
+                        style: {
+                            stroke: '#30BDA7',
+                            lineWidth: 2
+                        },
+                        xField: 'group',
+                        yField: 'price1',
+                        marker: {
+                            type: 'path',
+                            path: ['M', - 4, 0, 0, 4, 4, 0, 0, - 4, 'Z'],
+                            stroke: '#30BDA7',
+                            lineWidth: 2,
+                            fill: 'white'
+                        }
+                    }, {
+                        type: 'line',
+                        fill: true,
+                        style: {
+                            fill: '#96D4C6',
+                            fillOpacity: .6,
+                            stroke: '#0A3F50',
+                            strokeOpacity: .6,
+                        },
+                        xField: 'group',
+                        yField: 'price2',
+                        marker: {
+                            type: 'circle',
+                            radius: 4,
+                            lineWidth: 2,
+                            fill: 'white'
+                        }
+                    }]
+                }],
+        }]
     }]
 });

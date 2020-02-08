@@ -2,6 +2,7 @@ Ext.define('Study.view.product.ProductList', {
     extend: 'Ext.panel.Panel',
     xtype: 'productList',
     title :'상품목록',
+    margin :15,
     viewModel :'ProductList',
     controller : 'productListController',
     items:[{

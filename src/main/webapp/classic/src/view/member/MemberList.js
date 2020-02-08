@@ -3,6 +3,7 @@ Ext.define('Study.view.order.MemberList', {
     xtype: 'memberList',
     title :'회원목록',
     viewModel :'memberList',
+    margin :15,
     columnLines : true,
     items:[{
         tbar: [{

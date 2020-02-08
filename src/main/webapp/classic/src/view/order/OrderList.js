@@ -2,6 +2,7 @@ Ext.define('Study.view.order.OrderList', {
     extend: 'Ext.panel.Panel',
     xtype: 'orderList',
     title :'주문목록',
+    margin :15,
     viewModel :'orderList',
     columnLines : true,
     items:[{
