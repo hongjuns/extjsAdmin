@@ -11,5 +11,5 @@ Extjs
 
 # ExtJS 이용한 관리자 사이트
 <pre>
-ExtJS 6.5.3 GPL + Spring Boot를 이용하여 간단한 ExtJS MVVM 
+ExtJS 6.5.3 GPL + Spring Boot를 이용하여 간단한 ExtJS MVVM 토이프로젝트
 </pre>
